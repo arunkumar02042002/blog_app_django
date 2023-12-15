@@ -1,6 +1,8 @@
 {% extends 'common/base.html' %}
 {% load static %}
+
 {% block title %}
+    Bloggy | Home
 {% endblock %}
 {% block css %}
 <style>
@@ -36,7 +38,7 @@
             <img class="card-img-top" src="{{ blog.thumbnail.url }}" alt="{{blog.title}}">
             <div class="card-body">
                 <h5>{{ blog.title }}</h5>
-                <p class="card-text">{{blog.meta_text}}</p>
+                <p class="card-text">{{blog.description}}</p>
             </div>
             <a href="{{ blog.get_absolute_url }}" class="btn btn-primary">Read More</a>
           </div>

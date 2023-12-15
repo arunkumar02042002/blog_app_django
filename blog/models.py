@@ -13,7 +13,7 @@ class Post(TimeStampModel):
         on_delete=models.CASCADE
         )
     thumbnail = models.ImageField(upload_to='blog/thumnails', default='no-thumbnail.jpeg')
-    meta_text = models.CharField(max_length=255, default = 'This blog gives valuable insights')
+    description = models.CharField(max_length=255)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
