@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <nav class="navbar bg-dark border-bottom border-body fixed-top navbar-expand-lg" data-bs-theme="dark">
+    <nav class="navbar bg-dark border-bottom border-body navbar-expand-lg" data-bs-theme="dark">
         <div class="container-fluid my-2">
             <a class="navbar-brand mr-5" href="{% url 'home' %}">Bloggy</a> 
 
@@ -43,6 +43,30 @@
                         <a class="btn btn-outline-primary" aria-current="page" href="{% url 'blog_new' %}">New <i class="fa-solid fa-plus"></i></a>
                     </li>
                 </ul>
+            </div>
+        </div>
+        <div class="dropdown mr-3">
+            <button class="btn btn-secondary dropdown-toggle dropdownMenuButton" type="button"
+                id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+                Account
+            </button>
+            <ul class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right"
+                aria-labelledby="dropdownMenuButton">
+
+                {% if user.is_authenticated %}
+                <li>
+                    <form action="accounts/logout/" method="POST" class="dropdown-item"> {% csrf_token %}
+                        <input type="submit" value="Logout now" style="text-decoration: none;"/>
+                    </form>
+                </li>
+
+                {% else %}
+                <li><a class="dropdown-item btn btn-outline-secondary" href="{% url 'login' %}">Login</a></li>
+                <li><a class="dropdown-item btn btn-outline-secondary" href="{% url 'signup' %}">Singup</a></li>
+
+                {% endif %}
+
+            </ul>
         </div>
     </nav>
 
