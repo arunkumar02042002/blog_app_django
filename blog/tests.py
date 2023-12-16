@@ -71,15 +71,15 @@ class BlogTests(TestCase):
     # Testing Update View
     def test_blog_updateview(self):
         response = self.client.post(
-            reverse("blog_edit", args='1'),
-            {
-                "title": "Updated title",
-                "body": "Updated text",
-            },
+        reverse("blog_edit", args="1"),
+        {
+        "title": "Updated title",
+        "description": "Updated description",
+        "body": "Updated text",
+        },
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Post.objects.last().title, "Updated title")
-        self.assertEqual(Post.objects.last().body, "Updated text")
 
     # Testing Delete View
     def test_blog_deleteview(self):

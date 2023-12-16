@@ -30,6 +30,17 @@
 {% block body%}
 
 <div class="main-area">
+    <div class="container-fluid my-3">
+        {% if user.is_authenticated %}
+            <h3 class="text-center">Hey {{ user.username }}! Good to see you </h3>
+        {% else %}
+            <div class="d-flex justify-content-center align-item-center">
+                <span class="text-center">Hey Buddy, You are not Logged In.
+                    <a href="{% url 'login' %}">Log In</a> or <a href="{% url 'signup' %}">Sign Up</a>
+                </span>
+            </div>
+        {% endif %}
+    </div>
     <h1 class="text-center">Latest Blogs</h1>
     <div class="userfeed">
         {% for blog in blog_list %}

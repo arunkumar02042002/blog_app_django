@@ -1,4 +1,5 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
 from django.urls import reverse_lazy
 
@@ -12,17 +13,17 @@ class BlogDetailView(DetailView):
     template_name = "blog/blog_detail.html"
     context_object_name = 'blog'
 
-class BlogCreateView(CreateView):
+class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = 'blog/blog_create.html'
     fields = ['title', 'thumbnail', 'author', 'description', 'body']
 
-class BlogUpdateView(UpdateView):
+class BlogUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     template_name = "blog/blog_edit.html"
     fields = ["title", "thumbnail", "author", "description", "body"]
 
-class BlogDeleteView(DeleteView):
+class BlogDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'blog/blog_delete.html'
     success_url = reverse_lazy('home')
