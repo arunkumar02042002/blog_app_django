@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'common',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +120,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'staticfiles/'
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 MEDIA_ROOT = 'media/'
 MEDIA_URL = 'media/'
@@ -131,3 +134,7 @@ MEDIA_URL = 'media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Login, Logout, Registration, and User account settings
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
